@@ -42,7 +42,7 @@ with Producer(
         producer.produce(
             topic=topic,
             key="f1-data",
-            timestamp=time.time_ns(),
+            timestamp=time.time_ns() / 1000000,
             value=json.dumps(row_data))
 
         print("Row sent.")
