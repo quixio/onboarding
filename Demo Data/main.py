@@ -45,6 +45,8 @@ with Producer(
             timestamp=time.time_ns(),
             value=json.dumps(row_data))
 
+        producer.flush()
+
         print(str(datetime.datetime.fromtimestamp(row_data["Timestamp"])) + " - row sent")
 
 
