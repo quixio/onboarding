@@ -23,7 +23,11 @@ with Producer(
 
     # Read the CSV file into a pandas DataFrame
     df = pd.read_csv("demo-data.csv")
+
+
     print("File loaded.")
+
+    df = df.rename(columns={"Timestamp": "original_timestamp"})
 
     headers = df.columns.tolist()
 
@@ -32,6 +36,8 @@ with Producer(
 
         # Create a dictionary that includes both column headers and row values
         row_data = {header: row[header] for header in headers}
+
+        row_data["Timestamp"] = time.time_ns()
 
         producer.produce(
             topic=topic,
