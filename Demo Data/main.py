@@ -11,6 +11,7 @@ cfg_builder.create_topics([TopicCreationConfigs(name=topic)])
 
 import pandas as pd
 import datetime
+import numpy as np
 
 
 with Producer(
@@ -26,7 +27,7 @@ with Producer(
 
     print("File loaded.")
 
-    df = df.fillna(value=None)
+    df = df = df.replace({np.nan: None})
 
     df = df.rename(columns={"Timestamp": "original_timestamp"})
 
