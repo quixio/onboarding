@@ -45,7 +45,7 @@ with Producer(
             timestamp=time.time_ns(),
             value=json.dumps(row_data))
 
-        print(" - row sent")
+        print(str(datetime.datetime.fromtimestamp(row_data["Timestamp"])) + " - row sent")
 
 
         if index + 1 < len(df):
