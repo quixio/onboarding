@@ -48,7 +48,7 @@ with Producer(
 
         producer.flush()
 
-        print(str(datetime.datetime.fromtimestamp(row_data["Timestamp"])) + " - row sent")
+        #print(str(datetime.datetime.fromtimestamp(row_data["Timestamp"])) + " - row sent")
 
 
         if index + 1 < len(df):
