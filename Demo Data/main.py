@@ -5,7 +5,7 @@ from quixstreams.platforms.quix import QuixKafkaConfigsBuilder, TopicCreationCon
 import os
 import json
 cfg_builder = QuixKafkaConfigsBuilder()
-cfgs, topics, _ = cfg_builder.get_confluent_client_configs([os.environ["output"]])
+cfgs, topics, _ = cfg_builder.get_confluent_client_configs([os.environ["Topic"]])
 topic = topics[0]
 cfg_builder.create_topics([TopicCreationConfigs(name=topic)])
 
