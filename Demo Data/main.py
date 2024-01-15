@@ -1,15 +1,6 @@
 import time
-import uuid
-from random import randint, random, choice
-from time import sleep
-
-from dotenv import load_dotenv
 
 from quixstreams.kafka import Producer
-from quixstreams.models.serializers import (
-    QuixTimeseriesSerializer,
-    SerializationContext,
-)
 from quixstreams.platforms.quix import QuixKafkaConfigsBuilder, TopicCreationConfigs
 import os
 import json
