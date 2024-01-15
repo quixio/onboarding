@@ -46,7 +46,8 @@ with Producer(
 
     # Iterate over the rows and send them to the API
     for index, row in df.iterrows():
-
+        global published_rows
+        
         # If shutdown has been requested, exit the loop.
         if shutting_down:
             break
