@@ -41,7 +41,7 @@ with Producer(
 
         producer.produce(
             topic=topic,
-            key="f1-data",
+            key="f1-data".encode(),
             value=json.dumps(row_data))
 
         print("Row sent.")
