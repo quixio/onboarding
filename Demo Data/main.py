@@ -37,7 +37,7 @@ with Producer(
         # Create a dictionary that includes both column headers and row values
         row_data = {header: row[header] for header in headers}
 
-        row_data["Timestamp"] = time.time()
+        row_data["Timestamp"] = time.time_ns()
 
         producer.produce(
             topic=topic,
