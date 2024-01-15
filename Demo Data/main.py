@@ -39,7 +39,7 @@ with Producer(
 
         row_data["Timestamp"] = time.time_ns()
 
-        producer.produce()
+        producer.produce(
             topic=topic,
             key="f1-data",
             value=json.dumps(row_data))
