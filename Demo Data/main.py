@@ -44,6 +44,8 @@ with Producer(
             key="f1-data",
             value=json.dumps(row_data))
 
+        print(json.dumps(row_data))
+
         producer.flush()
 
         print(str(datetime.datetime.fromtimestamp(row_data["Timestamp"])) + " - row sent")
