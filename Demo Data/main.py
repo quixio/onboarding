@@ -26,7 +26,7 @@ with Producer(
 
     print("File loaded.")
 
-    df = df.fillna(None)
+    df = df.fillna(value=None)
 
     df = df.rename(columns={"Timestamp": "original_timestamp"})
 
