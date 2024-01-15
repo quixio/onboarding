@@ -12,7 +12,7 @@ from quixstreams.models.serializers import (
 )
 from quixstreams.platforms.quix import QuixKafkaConfigsBuilder, TopicCreationConfigs
 import os
-
+import json
 cfg_builder = QuixKafkaConfigsBuilder()
 cfgs, topics, _ = cfg_builder.get_confluent_client_configs([os.environ["output"]])
 topic = topics[0]
@@ -77,11 +77,11 @@ def process_csv_file(csv_file):
         # Create a dictionary that includes both column headers and row values
         row_data = {header: row[header] for header in headers}
 
-          producer.produce(
+        producer.produce(
             topic=topic,
             headers=headers,
             key=account_id,
-            value=
+            value=json.dumps(row_data)
 
         # Increment the number of published rows
         published_rows += 1
@@ -109,19 +109,6 @@ def process_csv_file(csv_file):
 
             time.sleep(delay_seconds)
 
-        
-
-    print("All rows published.")
-
-    # Close the stream when publishing has ended
-    # The stream can be reopened an ay time.
-    print("Closing the stream.")
-    stream_producer.close()
-
-
-# Run the CSV processing in a thread
-processing_thread = threading.Thread(target=process_csv_file, args=('demo-data.csv',))
-processing_thread.start()
 
 
 # Run this method before shutting down.
