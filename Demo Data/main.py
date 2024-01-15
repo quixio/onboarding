@@ -23,31 +23,8 @@ with Producer(
 ) as producer:
   
   
+    published_rows = 0
 
-
-       
-
-
-
-
-# This code will publish the CSV data to a stream as if the data were being generated in real-time.
-
-
-
-
-# True = keep original timings
-# False = No delay, speed through it as fast as possible
-keep_timing = True
-
-# If the process is terminated on the command line or by the container
-# setting this flag to True will tell the loops to stop and the code
-# to exit gracefully.
-shutting_down = False
-
-
-
-def process_csv_file(csv_file):
-    global shutting_down
 
     # Read the CSV file into a pandas DataFrame
     df = pd.read_csv(csv_file)
