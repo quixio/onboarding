@@ -1,1 +1,1 @@
-quixstreams==2.1.1a
+./Transformation/quixstreams-2.2.0a0-py3-none-any.whl
