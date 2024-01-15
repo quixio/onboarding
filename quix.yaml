@@ -9,7 +9,7 @@ deployments:
   - name: Demo Data
     application: Demo Data
     deploymentType: Job
-    version: v1-demo-data
+    version: a3d7c878112be6e98374aa7a48e435753d67bad3
     resources:
       cpu: 200
       memory: 500
