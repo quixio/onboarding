@@ -35,7 +35,6 @@ with Producer(
 
         producer.produce(
             topic=topic,
-            headers=headers,
             key="f1-data",
             value=json.dumps(row_data))
 
