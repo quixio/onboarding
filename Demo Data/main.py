@@ -10,7 +10,7 @@ topic = topics[0]
 cfg_builder.create_topics([TopicCreationConfigs(name=topic)])
 
 import pandas as pd
-
+import datetime
 
 
 with Producer(
@@ -45,7 +45,7 @@ with Producer(
             timestamp=time.time_ns(),
             value=json.dumps(row_data))
 
-        print("Row sent.")
+        print(" - row sent")
 
 
         if index + 1 < len(df):
