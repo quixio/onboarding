@@ -28,6 +28,7 @@ def init_reduce_speed(val: float) -> dict:
         "max": val,
         "min": val
     }
+sdf = sdf.update(lambda row: print(row))
 
 sdf = sdf.apply(lambda val: val["Speed"]).tumbling_window(10, 0).reduce(reduce_speed, init_reduce_speed).final()
 
