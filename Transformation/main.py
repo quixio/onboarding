@@ -10,7 +10,6 @@ output_topic = app.topic(os.environ["output"], value_serializer='json')
 
 sdf = app.dataframe(input_topic)
 
-# Here put transformation logic.
 
 sdf = sdf.update(lambda row: print(row))
 
