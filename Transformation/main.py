@@ -12,6 +12,7 @@ sdf = app.dataframe(input_topic)
 sdf = sdf[sdf.contains("Speed")]
 
 def reduce_speed(state: dict, val: float) -> dict:
+    print(state)
     state["last"] = val
     state["min"] = min(state["min"], val) 
     state["max"] = max(state["max"], val) 
