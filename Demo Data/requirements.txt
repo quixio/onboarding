@@ -1,0 +1,2 @@
+quixstreams>=2.0a
+pandas
