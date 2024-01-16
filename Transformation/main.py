@@ -1,14 +1,12 @@
 import os
 from quixstreams import Application, State
-from quixstreams.models.serializers.quix import QuixDeserializer, QuixTimeseriesSerializer
-
 
 app = Application.Quix("transformation-v8", auto_offset_reset="latest")
 
 def get_timestamp(val: dict, *_):
-    return val["timestamp"]
+    return val["Timestamp"] / 1000000
 
-input_topic = app.topic(os.environ["input"], value_deserializer='json', timestamp_extractor=)
+input_topic = app.topic(os.environ["input"], value_deserializer='json', timestamp_extractor=get_timestamp)
 output_topic = app.topic(os.environ["output"], value_serializer='json')
 
 sdf = app.dataframe(input_topic)
