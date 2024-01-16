@@ -5,7 +5,10 @@ from quixstreams.models.serializers.quix import QuixDeserializer, QuixTimeseries
 
 app = Application.Quix("transformation-v8", auto_offset_reset="latest")
 
-input_topic = app.topic(os.environ["input"], value_deserializer='json')
+def get_timestamp(val: dict, *_):
+    return val["timestamp"]
+
+input_topic = app.topic(os.environ["input"], value_deserializer='json', timestamp_extractor=)
 output_topic = app.topic(os.environ["output"], value_serializer='json')
 
 sdf = app.dataframe(input_topic)
