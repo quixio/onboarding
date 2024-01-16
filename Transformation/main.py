@@ -9,7 +9,7 @@ input_topic = app.topic(os.environ["input"], value_deserializer='json')
 output_topic = app.topic(os.environ["output"], value_serializer='json')
 
 sdf = app.dataframe(input_topic)
-sdf = sdf[sdf.contains("Speed")]
+sdf = sdf[sdf.contains("Speed") & sdf["Speed"].notnull()]
 
 def reduce_speed(state: dict, val: float) -> dict:
     print(state)
