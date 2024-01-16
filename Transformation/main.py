@@ -4,6 +4,7 @@ from quixstreams import Application, State
 app = Application.Quix("transformation-v8", auto_offset_reset="latest")
 
 def get_timestamp(val: dict, *_):
+    print("HAHA")
     return val["Timestamp"] / 1000000
 
 input_topic = app.topic(os.environ["input"], value_deserializer='json', timestamp_extractor=get_timestamp)
