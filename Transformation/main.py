@@ -13,6 +13,7 @@ sdf = sdf[sdf.contains("Speed")]
 
 def reduce_speed(state: dict, val: float) -> dict:
     print(state)
+    print(val)
     state["last"] = val
     state["min"] = min(state["min"], val) 
     state["max"] = max(state["max"], val) 
