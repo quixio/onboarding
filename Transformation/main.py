@@ -10,7 +10,15 @@ output_topic = app.topic(os.environ["output"], value_serializer='json')
 
 sdf = app.dataframe(input_topic)
 sdf = sdf[sdf.contains("Speed")]
-sdf = sdf.apply(lambda val: val["Speed"]).tumbling_window(10, 0).count().final()
+
+def reduce_speed(state: dict, val: float) -> dict:
+    state["last"] = value
+    state["min"] = min(state["min"], val) 
+    state["max"] = max(state["max"], val) 
+
+    return state
+
+sdf = sdf.apply(lambda val: val["Speed"]).tumbling_window(10, 0).r().final()
 
 sdf = sdf.update(lambda row: print(row))
 
