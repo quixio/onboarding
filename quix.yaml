@@ -23,12 +23,6 @@ deployments:
 
 # This section describes the Topics of the data pipeline
 topics:
-  - name: f1-data
-    persisted: false
-    configuration:
-      partitions: 0
-      retentionInMinutes: 10080
-      retentionInBytes: 52428800
   - name: transform
     persisted: false
     configuration:
